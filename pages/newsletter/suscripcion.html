@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Subscribe to our newsletter for the latest historical content and updates.">
+    <title>Newsletter Subscription - LostHistory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+</head>
+<body>
+    <!--#include virtual="../header.html" -->
+
+    <main class="container">
+        <div class="newsletter-container">
+            <h1>Subscribe to Our Newsletter</h1>
+            <p>Stay updated with our latest articles, videos, and historical insights.</p>
+            
+            <form id="newsletterForm" class="newsletter-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="privacy" required>
+                        I agree to the <a href="../legal/privacy.html">Privacy Policy</a>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+            
+            <div id="thankYouMessage" class="thank-you-message" style="display: none;">
+                <h2>Thank You for Subscribing!</h2>
+                <p>You'll receive a confirmation email shortly.</p>
+                <a href="../../index.html" class="btn">Back to Home</a>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="../footer.html" -->
+    <script src="../../js/main.js"></script>
+</body>
+</html>

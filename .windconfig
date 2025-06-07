@@ -1,0 +1,26 @@
+[project]
+name = "LostHistory Website"
+type = "website"
+base_url = "/LostHistory/"
+description = "Ancient history, curiosities and educational content"
+
+[structure]
+folders = ["pages", "images", "tools"]
+main_files = ["index.html", "style.css", "main.js", "manifest.json"]
+
+[standards]
+html_format = "valid_strict"
+css_format = "clean_responsive"
+routing = "relative_paths"
+github_pages_compatibility = true
+
+[seo]
+meta_description_required = true
+canonical_link_required = true
+robots_meta = "index, follow"
+og_tags_required = true
+
+[accessibility]
+alt_required_on_images = true
+semantic_tags_required = true
+aria_roles = true

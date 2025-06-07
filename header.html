@@ -1,0 +1,81 @@
+<header>
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" aria-current="page">
+                    <img src="images/Logo-Lost-History-Dorado.png" alt="LostHistory Logo">
+                </a>
+            </div>
+            
+            <!-- Botón de menú hamburguesa -->
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link" data-nav="home">Home</a></li>
+                <li><a href="pages/articles/" class="nav-link" data-nav="articles">Articles</a></li>
+                <li><a href="pages/films/" class="nav-link" data-nav="films">Films</a></li>
+                <li><a href="pages/games/" class="nav-link" data-nav="games">Games</a></li>
+                <li><a href="pages/videos/" class="nav-link" data-nav="videos">Videos</a></li>
+                <li><a href="pages/tools/" class="nav-link" data-nav="tools">Tools</a></li>
+                <li><a href="pages/shop/" class="nav-link" data-nav="shop">Shop</a></li>
+                <li><a href="pages/about/" class="nav-link" data-nav="about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<script>
+// Toggle mobile menu
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+// Add active class to current page link
+function setActiveLink() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navItems = document.querySelectorAll('.nav-link');
+    
+    navItems.forEach(item => {
+        const href = item.getAttribute('href');
+        const navId = item.getAttribute('data-nav');
+        
+        // Remove active class from all links
+        item.classList.remove('active');
+        
+        // Add active class to current page link
+        if (currentPage.includes(navId) || 
+            (currentPage === 'index.html' && navId === 'home') ||
+            (currentPage === '' && navId === 'home')) {
+            item.classList.add('active');
+        }
+    });
+}
+
+// Toggle mobile menu
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    hamburger.classList.toggle('active');
+});
+
+// Close menu when clicking a link
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+    });
+});
+
+// Set active link on page load
+document.addEventListener('DOMContentLoaded', setActiveLink);
+
+// Cerrar el menú al hacer clic fuera de él
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.main-nav') && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+    }
+});
+</script>
