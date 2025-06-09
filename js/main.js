@@ -75,8 +75,13 @@ function handleNewsletterSubmit(e) {
  * Sets the active navigation link based on current page
  */
 function setActiveNavLink() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    let currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav-link');
+    
+    // Handle GitHub Pages root path
+    if (currentPage === 'LostHistory' || currentPage === '') {
+        currentPage = 'index.html';
+    }
     
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
@@ -88,7 +93,8 @@ function setActiveNavLink() {
         // Add active class to current page link
         if (currentPage.includes(navId) || 
             (currentPage === 'index.html' && navId === 'home') ||
-            (currentPage === '' && navId === 'home')) {
+            (currentPage === '' && navId === 'home') ||
+            (currentPage.endsWith('/') && navId === 'home')) {
             link.classList.add('active');
         }
     });

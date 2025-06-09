@@ -35,7 +35,11 @@ const navLinks = document.getElementById('navLinks');
 
 // Add active class to current page link
 function setActiveLink() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    let currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    // Handle case when accessing from root
+    if (currentPage === 'LostHistory' || currentPage === '') {
+        currentPage = 'index.html';
+    }
     const navItems = document.querySelectorAll('.nav-link');
     
     navItems.forEach(item => {

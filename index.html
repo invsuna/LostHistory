@@ -9,10 +9,10 @@
     <meta name="theme-color" content="#1a1a1a">
     <meta property="og:title" content="LostHistory - Discover Forgotten Stories">
     <meta property="og:description" content="Explore lost and forgotten stories from history through articles, videos, and educational resources.">
-    <meta property="og:image" content="/LostHistory/images/og-image.jpg">
+    <meta property="og:image" content="images/og-image.jpg">
     <meta property="og:url" content="https://invsuna.github.io/LostHistory/">
     <meta name="twitter:card" content="summary_large_image">
-    <base href="/LostHistory/">
+    <!-- Base URL is relative for GitHub Pages -->
     <title>LostHistory - Discover Forgotten Stories</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,10 +21,10 @@
     <link rel="stylesheet" href="css/base.css">
     <!-- Header Styles -->
     <link rel="stylesheet" href="css/header.css">
-    <!-- Main Styles -->
-    <link rel="stylesheet" href="style.css">
     <!-- Footer Styles -->
     <link rel="stylesheet" href="css/footer.css">
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="style.css">
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -43,13 +43,13 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="articles/">Articles</a></li>
-                <li><a href="films/">Films</a></li>
-                <li><a href="videogames/">VideoGames</a></li>
-                <li><a href="videos/">Videos</a></li>
-                <li><a href="newsletter/suscripcion.html">Newsletter</a></li>
-                <li><a href="shop/">Shop</a></li>
-                <li><a href="about/">About Us</a></li>
+                <li><a href="pages/articles/">Articles</a></li>
+                <li><a href="pages/films/">Films</a></li>
+                <li><a href="pages/games/">Games</a></li>
+                <li><a href="pages/videos/">Videos</a></li>
+                <li><a href="pages/tools/">Tools</a></li>
+                <li><a href="pages/shop/">Shop</a></li>
+                <li><a href="pages/about/">About</a></li>
             </ul>
         </nav>
     </header>
@@ -176,7 +176,7 @@
             <div class="footer-section">
                 <h3>Newsletter</h3>
                 <p>Subscribe to our newsletter to stay updated with new content and historical insights.</p>
-                <form action="newsletter/suscripcion.html" method="get" class="newsletter-form">
+                <form action="pages/newsletter/suscripcion.html" method="get" class="newsletter-form">
                     <input type="email" name="email" placeholder="Your email" required>
                     <button type="submit">Subscribe</button>
                 </form>
@@ -185,7 +185,7 @@
         <div class="copyright">
             <p>2025 LostHistory</p>
             <div class="legal-links">
-                <a href="legal/privacy.html" aria-label="Privacy Policy">Privacy Policy</a>
+                <a href="pages/legal/privacy.html" aria-label="Privacy Policy">Privacy Policy</a>
                 <a href="legal/cookies.html" aria-label="Cookies Policy">Cookies Policy</a>
                 <a href="legal/terms-of-service.html" aria-label="Terms of Service">Terms of Service</a>
                 <a href="legal/disclaimer.html" aria-label="Disclaimer">Disclaimer</a>
