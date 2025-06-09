@@ -72,29 +72,36 @@ function handleNewsletterSubmit(e) {
 }
 
 /**
- * Sets the active navigation link based on current page
+ * Sets active navigation link based on current page
  */
 function setActiveNavLink() {
-    let currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const currentPath = window.location.pathname.toLowerCase();
     const navLinks = document.querySelectorAll('.nav-link');
     
-    // Handle GitHub Pages root path
-    if (currentPage === 'LostHistory' || currentPage === '') {
-        currentPage = 'index.html';
-    }
-    
     navLinks.forEach(link => {
-        const href = link.getAttribute('href');
+        const linkPath = link.getAttribute('href').toLowerCase();
         const navId = link.getAttribute('data-nav');
         
         // Remove active class from all links
         link.classList.remove('active');
         
-        // Add active class to current page link
-        if (currentPage.includes(navId) || 
-            (currentPage === 'index.html' && navId === 'home') ||
-            (currentPage === '' && navId === 'home') ||
-            (currentPage.endsWith('/') && navId === 'home')) {
+        // Check for exact path match
+        if (currentPath === linkPath) {
+            link.classList.add('active');
+            return;
+        }
+        
+        // Handle home page
+        if ((currentPath.endsWith('/losthistory/') || 
+             currentPath.endsWith('/losthistory') ||
+             currentPath.endsWith('/losthistory/index.html')) && 
+            (linkPath.endsWith('/losthistory/') || navId === 'home')) {
+            link.classList.add('active');
+            return;
+        }
+        
+        // Handle section pages
+        if (currentPath.includes(linkPath) && linkPath !== '/losthistory/') {
             link.classList.add('active');
         }
     });
