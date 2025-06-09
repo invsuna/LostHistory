@@ -75,33 +75,42 @@ function handleNewsletterSubmit(e) {
  * Sets active navigation link based on current page
  */
 function setActiveNavLink() {
-    const currentPath = window.location.pathname.toLowerCase();
+    // Get current page path and clean it up
+    let currentPath = window.location.pathname.toLowerCase();
+    
+    // Remove any trailing slashes or index.html
+    currentPath = currentPath.replace(/\/+$/, '').replace(/index\.html$/, '');
+    
     const navLinks = document.querySelectorAll('.nav-link');
     
     navLinks.forEach(link => {
-        const linkPath = link.getAttribute('href').toLowerCase();
+        let linkPath = link.getAttribute('href').toLowerCase();
         const navId = link.getAttribute('data-nav');
+        
+        // Clean up link path
+        linkPath = linkPath.replace(/\/+$/, '').replace(/index\.html$/, '');
         
         // Remove active class from all links
         link.classList.remove('active');
         
-        // Check for exact path match
-        if (currentPath === linkPath) {
-            link.classList.add('active');
-            return;
-        }
-        
         // Handle home page
-        if ((currentPath.endsWith('/losthistory/') || 
-             currentPath.endsWith('/losthistory') ||
-             currentPath.endsWith('/losthistory/index.html')) && 
-            (linkPath.endsWith('/losthistory/') || navId === 'home')) {
+        if ((currentPath.endsWith('losthistory') || 
+             currentPath.endsWith('losthistory/') ||
+             currentPath === '') && 
+            (linkPath === '..' || linkPath === '../index.html' || navId === 'home')) {
             link.classList.add('active');
             return;
         }
         
-        // Handle section pages
-        if (currentPath.includes(linkPath) && linkPath !== '/losthistory/') {
+        // Check if current path ends with the link path
+        if (currentPath.endsWith(linkPath)) {
+            link.classList.add('active');
+            return;
+        }
+        
+        // Handle section pages (e.g., /articles/ should match /articles/index.html)
+        if (linkPath.endsWith(currentPath) || 
+            (currentPath.endsWith(linkPath.replace('../', '')) && linkPath.startsWith('../'))) {
             link.classList.add('active');
         }
     });
