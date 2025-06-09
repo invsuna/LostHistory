@@ -22,9 +22,25 @@ header {
     align-items: center;
 }
 
-.logo img {
-    height: 40px;
+.logo {
+    max-width: 200px;
+}
+
+.logo-img {
+    height: auto;
+    max-height: 60px;
     width: auto;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        max-width: 160px;
+    }
+    
+    .logo-img {
+        max-height: 50px;
+    }
 }
 
 .nav-links {
