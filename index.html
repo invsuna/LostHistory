@@ -26,10 +26,100 @@
     <!-- Main Styles -->
     <link rel="stylesheet" href="style.css">
     <!-- Favicon -->
-    <!--#include virtual="includes/favicon.html" -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="images/favicon_io/site.webmanifest">
+    <link rel="shortcut icon" href="images/favicon_io/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <!--#include virtual="header.html" -->
+    <header>
+        <nav class="main-nav">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html" aria-current="page">
+                        <img src="images/lost-history-column-gold.png" alt="LostHistory Logo" class="logo-img">
+                    </a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button class="hamburger" id="hamburger" aria-label="Menú de navegación">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </button>
+                
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link" data-nav="home">Home</a></li>
+                    <li><a href="pages/articles/" class="nav-link" data-nav="articles">Articles</a></li>
+                    <li><a href="pages/films/" class="nav-link" data-nav="films">Films</a></li>
+                    <li><a href="pages/games/" class="nav-link" data-nav="games">Games</a></li>
+                    <li><a href="pages/videos/" class="nav-link" data-nav="videos">Videos</a></li>
+                    <li><a href="pages/tools/" class="nav-link" data-nav="tools">Tools</a></li>
+                    <li><a href="pages/shop/" class="nav-link" data-nav="shop">Shop</a></li>
+                    <li><a href="pages/about/" class="nav-link" data-nav="about">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <script>
+    // Toggle mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    // Add active class to current page link
+    function setActiveLink() {
+        let currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        // Handle case when accessing from root
+        if (currentPage === 'LostHistory' || currentPage === '') {
+            currentPage = 'index.html';
+        }
+        const navItems = document.querySelectorAll('.nav-link');
+        
+        navItems.forEach(item => {
+            const href = item.getAttribute('href');
+            const navId = item.getAttribute('data-nav');
+            
+            // Remove active class from all links
+            item.classList.remove('active');
+            
+            // Add active class to current page link
+            if (currentPage.includes(navId) || 
+                (currentPage === 'index.html' && navId === 'home') ||
+                (currentPage === '' && navId === 'home')) {
+                item.classList.add('active');
+            }
+        });
+    }
+
+    // Toggle mobile menu
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+    }
+
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinks) navLinks.classList.remove('active');
+            if (hamburger) hamburger.classList.remove('active');
+        });
+    });
+
+    // Set active link on page load
+    document.addEventListener('DOMContentLoaded', setActiveLink);
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navLinks && !e.target.closest('.main-nav') && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            if (hamburger) hamburger.classList.remove('active');
+        }
+    });
+    </script>
 
     <main>
         <article>
@@ -130,24 +220,24 @@
                 <h3>Quick Links</h3>
                 <ul class="quick-links">
                     <li><a href="index.html" aria-label="Home page">Home</a></li>
-                    <li><a href="articles/" aria-label="Articles section">Articles</a></li>
-                    <li><a href="videos/" aria-label="Videos section">Videos</a></li>
-                    <li><a href="films/" aria-label="Films section">Films</a></li>
-                    <li><a href="videogames/" aria-label="VideoGames section">VideoGames</a></li>
-                    <li><a href="newsletter/suscripcion.html" aria-label="Newsletter">Newsletter</a></li>
-                    <li><a href="shop/" aria-label="Shop">Shop</a></li>
-                    <li><a href="about/" aria-label="About Us">About Us</a></li>
+                    <li><a href="pages/articles/" aria-label="Articles section">Articles</a></li>
+                    <li><a href="pages/videos/" aria-label="Videos section">Videos</a></li>
+                    <li><a href="pages/films/" aria-label="Films section">Films</a></li>
+                    <li><a href="pages/videogames/" aria-label="VideoGames section">VideoGames</a></li>
+                    <li><a href="pages/newsletter/suscripcion.html" aria-label="Newsletter">Newsletter</a></li>
+                    <li><a href="pages/shop/" aria-label="Shop">Shop</a></li>
+                    <li><a href="pages/about/" aria-label="About Us">About Us</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Shop Categories</h3>
                 <ul class="quick-links">
-                    <li><a href="shop/books.html">Books & Textbooks</a></li>
-                    <li><a href="shop/educational-kits.html">Educational Kits</a></li>
-                    <li><a href="shop/videos.html">Educational Videos</a></li>
-                    <li><a href="shop/games.html">Educational Games</a></li>
-                    <li><a href="shop/merchandise.html">Merchandise</a></li>
-                    <li><a href="shop/courses.html">Online Courses</a></li>
+                    <li><a href="pages/shop/books.html">Books & Textbooks</a></li>
+                    <li><a href="pages/shop/educational-kits.html">Educational Kits</a></li>
+                    <li><a href="pages/shop/videos.html">Educational Videos</a></li>
+                    <li><a href="pages/shop/games.html">Educational Games</a></li>
+                    <li><a href="pages/shop/merchandise.html">Merchandise</a></li>
+                    <li><a href="pages/shop/courses.html">Online Courses</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -163,9 +253,9 @@
             <p>2025 LostHistory</p>
             <div class="legal-links">
                 <a href="pages/legal/privacy.html" aria-label="Privacy Policy">Privacy Policy</a>
-                <a href="legal/cookies.html" aria-label="Cookies Policy">Cookies Policy</a>
-                <a href="legal/terms-of-service.html" aria-label="Terms of Service">Terms of Service</a>
-                <a href="legal/disclaimer.html" aria-label="Disclaimer">Disclaimer</a>
+                <a href="pages/legal/cookies.html" aria-label="Cookies Policy">Cookies Policy</a>
+                <a href="pages/legal/terms-of-service.html" aria-label="Terms of Service">Terms of Service</a>
+                <a href="pages/legal/disclaimer.html" aria-label="Disclaimer">Disclaimer</a>
             </div>
             <div class="license">
                 <p>Content is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
