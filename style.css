@@ -86,8 +86,11 @@
     z-index: 1;
 }
 
-/* ===== FEATURED ARTICLES ===== */
-.featured-articles {
+/* ===== FEATURED SECTIONS ===== */
+.featured-articles,
+.featured-section,
+.featured-films,
+.featured-games {
     --section-padding: var(--spacing-20) var(--spacing-10);
     --section-bg: var(--gray-100);
     
@@ -100,6 +103,11 @@
     transition: background-color var(--transition-base);
 }
 
+/* Alternate background for every other section */
+.featured-section:nth-child(even) {
+    --section-bg: var(--white);
+}
+
 .featured-articles::before {
     content: '';
     display: block;
@@ -108,7 +116,8 @@
     visibility: hidden;
 }
 
-.articles-grid {
+.articles-grid,
+.featured-grid {
     --grid-gap: var(--spacing-10);
     --grid-padding: 0 var(--spacing-8);
     --grid-min-item: 300px;
@@ -121,7 +130,8 @@
     padding: var(--grid-padding);
 }
 
-.article-card {
+.article-card,
+.featured-card {
     --card-bg: var(--white);
     --card-border: 1px solid var(--gray-200);
     --card-radius: 8px;
@@ -138,6 +148,9 @@
     border: var(--card-border);
     max-width: var(--card-max-width);
     margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .article-card:hover {
@@ -145,11 +158,13 @@
     box-shadow: var(--card-hover-shadow);
 }
 
-.article-image {
+.article-image,
+.featured-image {
     --image-height: 200px;
     
     height: var(--image-height);
     overflow: hidden;
+    position: relative;
 }
 
 .article-image img {
@@ -163,29 +178,38 @@
     transform: scale(1.05);
 }
 
-.article-content {
+.article-content,
+.featured-content {
     --content-padding: var(--spacing-6);
     
     padding: var(--content-padding);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-.article-title {
+.article-title,
+.featured-title {
     --title-font-size: var(--font-size-xl);
     --title-margin: 0 0 var(--spacing-3);
     
     font-size: var(--title-font-size);
     margin: var(--title-margin);
+    line-height: 1.3;
 }
 
-.article-excerpt {
+.article-excerpt,
+.featured-excerpt {
     --excerpt-color: var(--gray-600);
     --excerpt-margin: 0 0 var(--spacing-4);
     
     color: var(--excerpt-color);
     margin: var(--excerpt-margin);
+    flex: 1;
 }
 
-.article-meta {
+.article-meta,
+.featured-meta {
     --meta-font-size: var(--font-size-sm);
     --meta-color: var(--gray-500);
     
@@ -194,9 +218,45 @@
     align-items: center;
     font-size: var(--meta-font-size);
     color: var(--meta-color);
+    margin-top: auto;
+    padding-top: var(--spacing-4);
+    border-top: 1px solid var(--gray-200);
 }
 
-.read-more {
+/* Category Tag */
+.category-tag,
+.featured-category {
+    --tag-padding: 0.25rem 0.75rem;
+    --tag-bg: var(--secondary-color);
+    --tag-color: var(--white);
+    --tag-radius: 20px;
+    --tag-font-size: 0.7rem;
+    --tag-font-weight: 600;
+    --tag-position: 1rem 1rem;
+    
+    position: absolute;
+    top: var(--tag-position);
+    left: var(--tag-position);
+    background-color: var(--tag-bg);
+    color: var(--tag-color);
+    padding: var(--tag-padding);
+    border-radius: var(--tag-radius);
+    font-size: var(--tag-font-size);
+    font-weight: var(--tag-font-weight);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 1;
+}
+
+/* Meta Info */
+.featured-duration,
+.featured-rating {
+    font-weight: 600;
+    color: var(--gray-700);
+}
+
+.read-more,
+.featured-link {
     --link-color: var(--secondary-color);
     --link-font-weight: 600;
     --link-font-size: var(--font-size-xs);
@@ -208,6 +268,34 @@
     font-size: var(--link-font-size);
     letter-spacing: var(--link-letter-spacing);
     text-decoration: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .featured-section {
+        --section-padding: var(--spacing-12) var(--spacing-4);
+    }
+    
+    .articles-grid,
+    .featured-grid {
+        --grid-padding: 0;
+        --grid-min-item: 280px;
+    }
+    
+    .featured-category {
+        --tag-font-size: 0.65rem;
+        --tag-padding: 0.2rem 0.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .featured-title {
+        --title-font-size: var(--font-size-lg);
+    }
+    
+    .featured-excerpt {
+        font-size: 0.9rem;
+    }
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
