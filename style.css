@@ -34,11 +34,22 @@
 
 /* Featured Articles */
 .featured-articles {
-    padding: 4rem 2.5rem;
-    max-width: 1400px;
+    padding: 5rem 2.5rem;
+    max-width: 100%;
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+}
+
+/* Add some space before the section */
+.featured-articles::before {
+    content: '';
+    display: block;
+    height: 60px;
+    margin-top: -60px;
+    visibility: hidden;
 }
 
 .articles-grid {
