@@ -64,26 +64,16 @@
 
     // Add active class to current page link
     function setActiveLink() {
-        let currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        // Handle case when accessing from root
-        if (currentPage === 'LostHistory' || currentPage === '') {
-            currentPage = 'index.html';
-        }
-        const navItems = document.querySelectorAll('.nav-link');
+        const path = window.location.pathname;
+        const isArticlesPage = path.includes('/articles/') || path.endsWith('/articles') || path.endsWith('/articles/index.html');
         
-        navItems.forEach(item => {
-            const href = item.getAttribute('href');
-            const navId = item.getAttribute('data-nav');
+        document.querySelectorAll('.nav-link').forEach(link => {
+            const navId = link.getAttribute('data-nav');
+            link.classList.remove('active');
             
-            // Remove active class from all links
-            item.classList.remove('active');
-            
-            // Add active class to current page link
-            if (currentPage.includes(navId) || 
-                (currentPage === 'index.html' && navId === 'home') ||
-                (currentPage === '' && navId === 'home') ||
-                (navId === 'articles' && currentPage.includes('articles'))) {
-                item.classList.add('active');
+            if ((isArticlesPage && navId === 'articles') || 
+                (!isArticlesPage && path.endsWith(link.getAttribute('href')))) {
+                link.classList.add('active');
             }
         });
     }
