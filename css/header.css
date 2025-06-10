@@ -33,22 +33,15 @@ header {
     transition: all 0.3s ease;
 }
 
-@media (max-width: 768px) {
-    .logo {
-        max-width: 160px;
-    }
-    
-    .logo-img {
-        max-height: 50px;
-    }
-}
-
+/* Adjust navigation to align properly with larger logo */
 .nav-links {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
     gap: 1.5rem;
+    flex-grow: 1;
+    justify-content: flex-end;
 }
 
 .nav-links a {
@@ -101,7 +94,29 @@ header {
 }
 
 /* Mobile Menu Styles */
+@media (max-width: 1024px) {
+    .logo {
+        max-width: 250px;
+    }
+    
+    .logo-img {
+        max-height: 70px;
+    }
+}
+
 @media (max-width: 768px) {
+    .logo {
+        max-width: 160px;
+    }
+    
+    .logo-img {
+        max-height: 50px;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+
     .hamburger {
         display: block;
     }
