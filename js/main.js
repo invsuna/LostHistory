@@ -15,7 +15,35 @@ document.addEventListener('DOMContentLoaded', function() {
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', handleNewsletterSubmit);
     }
+    
+    // Initialize header scroll behavior
+    initHeaderScroll();
 });
+
+/**
+ * Handles header show/hide on scroll
+ */
+function initHeaderScroll() {
+    const header = document.querySelector('header');
+    if (!header) return;
+    
+    let lastScroll = 0;
+    
+    window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset;
+        
+        // If scrolling down and not already hidden, hide header
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            header.classList.add('header-hide');
+        } 
+        // If scrolling up or at top of page, show header
+        else if (currentScroll < lastScroll) {
+            header.classList.remove('header-hide');
+        }
+        
+        lastScroll = currentScroll;
+    });
+}
 
 /**
  * Updates the current year in the footer

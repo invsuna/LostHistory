@@ -7,10 +7,17 @@ header {
     top: 0;
     left: 0;
     z-index: 1000;
+    padding: 2px 0;  /* Reduced from 5px */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Class to hide header when scrolling down */
+.header-hide {
+    transform: translateY(-100%);
 }
 
 .main-nav {
-    padding: 1rem 0;
+    padding: 0;
 }
 
 .container {
@@ -23,25 +30,38 @@ header {
 }
 
 .logo {
-    max-width: 200px;
+    flex: 0 0 auto;
 }
 
 .logo-img {
-    height: auto;
-    max-height: 60px;
+    height: 80px;  /* Reduced from 100px */
     width: auto;
+    max-width: none;
     transition: all 0.3s ease;
+    display: block;
 }
 
-/* Adjust navigation to align properly with larger logo */
+/* Navigation */
 .nav-links {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
     gap: 1.5rem;
+    align-items: center;
     flex-grow: 1;
     justify-content: flex-end;
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+    .logo-img {
+        height: 55px;  /* Reduced from 65px */
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
 }
 
 .nav-links a {
@@ -94,25 +114,7 @@ header {
 }
 
 /* Mobile Menu Styles */
-@media (max-width: 1024px) {
-    .logo {
-        max-width: 250px;
-    }
-    
-    .logo-img {
-        max-height: 70px;
-    }
-}
-
 @media (max-width: 768px) {
-    .logo {
-        max-width: 160px;
-    }
-    
-    .logo-img {
-        max-height: 50px;
-    }
-    
     .container {
         padding: 0 1rem;
     }
@@ -151,5 +153,9 @@ header {
 
     .hamburger.active div:nth-child(3) {
         transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .logo-img {
+        height: 55px;
     }
 }

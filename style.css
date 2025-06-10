@@ -4,21 +4,23 @@
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                url('../images/hero-bg.jpg') no-repeat center center/cover;
-    height: 80vh;
+    background: url('../images/banner-historic-simple.png') no-repeat center center/cover;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: var(--white);
-    padding: 0 1.5rem;
+    color: white;
+    padding: 2rem 1rem;
+    position: relative;
 }
 
 .hero h1 {
     font-size: 3rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    z-index: 1;
     color: var(--white);
 }
 
@@ -26,18 +28,26 @@
     font-size: 1.25rem;
     max-width: 800px;
     margin: 0 auto 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    z-index: 1;
 }
 
 /* Featured Articles */
 .featured-articles {
-    padding: 4rem 0;
+    padding: 4rem 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .articles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 0 1.5rem;
+    gap: 2.5rem;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .article-card {
@@ -46,6 +56,9 @@
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e0e0e0;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .article-card:hover {
